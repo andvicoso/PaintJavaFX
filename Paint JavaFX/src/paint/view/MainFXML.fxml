@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paint.controller.MainFXMLController">
+   <center>
+      <StackPane fx:id="stackPane" alignment="TOP_LEFT" BorderPane.alignment="TOP_LEFT">
+         <children>
+            <Canvas fx:id="canvas2" height="600.0" width="800.0" />
+            <Canvas fx:id="canvas" height="600" width="800" />
+         </children>
+      </StackPane>
+   </center>
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar prefHeight="25.0" prefWidth="1200.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem fx:id="openImage" mnemonicParsing="false" onAction="#handleActionOpen" text="Open Image" />
+                    <MenuItem fx:id="saveImage" mnemonicParsing="false" onAction="#handleActionSave" text="Save Image" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <Menu fx:id="mnuRecents" mnemonicParsing="false" text="Recent" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleActionOut" text="Quit" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <HBox alignment="CENTER_LEFT" spacing="5.0">
+               <children>
+                  <ToggleButton fx:id="circle" mnemonicParsing="false" onAction="#circleAction" prefHeight="31.0" prefWidth="85.0" text="Circle">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="grou1" />
+                     </toggleGroup>
+                  </ToggleButton>
+                  <ToggleButton fx:id="square" mnemonicParsing="false" onAction="#rectangleAction" prefHeight="31.0" prefWidth="85.0" text="Rectangle" toggleGroup="$grou1" />
+                  <ToggleButton fx:id="line" mnemonicParsing="false" onAction="#lineAction" prefHeight="31.0" prefWidth="85.0" text="Line" toggleGroup="$grou1" />
+                  <ToggleButton fx:id="freeDraw" mnemonicParsing="false" onAction="#freeDrawAction" prefHeight="31.0" prefWidth="85.0" selected="true" text="Free draw" toggleGroup="$grou1" />
+                  <HBox alignment="CENTER" prefHeight="23.0" spacing="5.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="34.0" text="Brush" />
+                        <Label fx:id="showSize" text="10" />
+                        <Button fx:id="increase" mnemonicParsing="false" onAction="#increaseAction" prefHeight="25.0" prefWidth="29.0" text="+">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="decrease" mnemonicParsing="false" onAction="#decreaseAction" prefHeight="25.0" prefWidth="29.0" text="-">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </HBox>
+                  <ToggleButton fx:id="painting" mnemonicParsing="false" onAction="#paintingAction" prefHeight="31.0" prefWidth="85.0" text="Bucket" toggleGroup="$grou1" />
+                  <ToggleButton fx:id="delete" mnemonicParsing="false" onAction="#deleteAction" prefHeight="31.0" prefWidth="85.0" text="Rubber" toggleGroup="$grou1" />
+                  <ToggleButton fx:id="textButton" mnemonicParsing="false" onAction="#textAction" prefHeight="31.0" prefWidth="85.0" text="Text" toggleGroup="$grou1" />
+                  <HBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="33.0" text="Font" />
+                        <Label fx:id="showFontSize" text="12" />
+                        <Button mnemonicParsing="false" onAction="#increaseFontAction" prefHeight="25.0" prefWidth="29.0" text="+">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#decreaseFontAction" prefHeight="25.0" prefWidth="29.0" text="-" />
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </HBox>
+                  <ColorPicker fx:id="colorpicker" prefHeight="25.0" prefWidth="105.0" promptText="White" />
+                  <Button fx:id="btnUndo" disable="true" mnemonicParsing="false" onAction="#handleActionUndo" text="Undo" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnRedo" disable="true" mnemonicParsing="false" onAction="#handleActionRedo" text="Redo" HBox.hgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+</BorderPane>
